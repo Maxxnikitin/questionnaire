@@ -34,6 +34,11 @@
   position: absolute;
   top: 10px;
   left: 16px;
+  transition: 0.3s;
+}
+
+.on-focus {
+  top: 0;
 }
 
 .create-poll__form-input {
@@ -125,11 +130,7 @@
   align-self: center;
 }
 
-.create-poll__answer #checkbox {
-  align-self: center;
-}
-
-.create-poll__answer #radio {
+.create-poll__answer #answer-box {
   align-self: center;
 }
 
