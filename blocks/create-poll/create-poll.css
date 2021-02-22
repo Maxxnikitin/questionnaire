@@ -1,0 +1,50 @@
+.create-poll {
+  display: flex;
+  padding: 20xp;
+  margin-right: 10px;
+  min-height: 70vh;
+}
+
+.create-poll__questions {
+  padding: 20px;
+  margin: 0;
+  background-color: #fff;
+}
+
+.create-poll__question {
+  list-style-type: none;
+}
+
+.create-poll__form {
+  display: flex;
+}
+
+.create-poll__form-settings {
+  margin-left: 5px;
+}
+
+.create-poll__buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.create-poll__button {
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #fff;
+  color: #9b9b9b;
+  border: none;
+  outline: none;
+}
+
+.create-poll__button:first-child {
+  margin-right: 5px;
+}
+
+..create-poll__button:hover {
+  background-color: #666;
+  color: green;
+}
+
+.create-poll__form-checkbox {
+}

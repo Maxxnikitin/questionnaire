@@ -1,0 +1,20 @@
+.form {
+}
+
+.form__title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.form__fieldset {
+  border: none;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+.form__input {
+  width: calc(100% - 40px);
+  padding: 6px 12px;
+  border: 1px solid #e5e6e7;
+}

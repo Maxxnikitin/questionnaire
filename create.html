@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <link rel="stylesheet" href="pages/create.css" />
+    <meta
+      name="description"
+      content="Тестовое задание по созданию шаблона для опросника"
+    />
+    <meta name="keywords" content="HTML5, CSS, TypeScript" />
+    <meta name="author" content="Максим Никитин" />
+    <title>Опросник</title>
+  </head>
+  <body>
+    <main class="page">
+      <section class="main-form">
+        <h1 class="title">Содержимое опроса</h1>
+        <form
+          class="form"
+          id="form-create"
+          name="form-create"
+          method="post"
+          action="#"
+        >
+          <fieldset class="form__fieldset">
+            <legend class="form__title">Наименование опроса</legend>
+            <input
+              class="form__input form__input_name"
+              id="name"
+              type="text"
+              name="name"
+              minlength="2"
+              maxlength="40"
+              required
+              pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+            />
+          </fieldset>
+          <div class="form__buttons">
+            <button class="button button_save" id="btn-save" type="submit">
+              Сохранить
+            </button>
+            <a class="button button_cancel" href="/"> Отмена </a>
+            <button class="button button_test" id="btn-test" type="button">
+              Тест
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="content">
+        <div class="create-poll">
+          <ul class="create-poll__questions">
+            <li class="create-poll__question">
+              <form class="create-poll__form">
+                <input
+                  type="text"
+                  class="create-poll__form-input"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                  pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                />
+                <div class="create-poll__form-settings">
+                  <div class="create-poll__buttons">
+                    <button class="create-poll__button" type="button">
+                      <img src="./images/copy-files-svgrepo-com.svg" />
+                    </button>
+                    <button class="create-poll__button" type="button">
+                      &#10006;
+                    </button>
+                  </div>
+                  <form class="create-poll__form-checkbox">
+                    <input type="checkbox" name="required" value="isRequired" />
+                    <span class="">Обязательно</span>
+                  </form>
+                </div>
+              </form>
+            </li>
+          </ul>
+          <ul class="create-poll__templates"></ul>
+        </div>
+      </section>
+    </main>
+    <script src="./dist/index.js"></script>
+  </body>
+</html>
