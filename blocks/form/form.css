@@ -15,6 +15,15 @@
 
 .form__input {
   width: calc(100% - 40px);
-  padding: 6px 12px;
+  padding: 8px 12px;
   border: 1px solid #e5e6e7;
+  outline: none;
+  font-size: 13px;
+  line-height: 15px;
+  color: #676a6c;
+  transition: 0.15s;
+}
+
+.form__input:focus {
+  border-color: green;
 }

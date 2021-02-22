@@ -53,34 +53,315 @@
         <div class="create-poll">
           <ul class="create-poll__questions">
             <li class="create-poll__question">
-              <form class="create-poll__form">
-                <input
-                  type="text"
-                  class="create-poll__form-input"
-                  minlength="2"
-                  maxlength="40"
-                  required
-                  pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+              <div class="create-poll__drag-button add-bgcolor-blue">
+                <img
+                  class="create-poll__form-img"
+                  src="./images/dots.svg"
+                  alt="кнопка для перетаскивания."
                 />
-                <div class="create-poll__form-settings">
-                  <div class="create-poll__buttons">
-                    <button class="create-poll__button" type="button">
-                      <img src="./images/copy-files-svgrepo-com.svg" />
-                    </button>
+              </div>
+              <form class="create-poll__form add-border-blue">
+                <div class="create-poll__form-content">
+                  <label class="create-poll__form-label"
+                    >Название вопроса</label
+                  >
+                  <input
+                    type="text"
+                    class="create-poll__form-input"
+                    minlength="2"
+                    maxlength="40"
+                    required
+                    pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                  />
+                  <div class="create-poll__form-settings">
+                    <div class="create-poll__buttons">
+                      <button class="create-poll__button" type="button">
+                        <img
+                          class="create-poll__button-img"
+                          src="./images/copy-files-svgrepo-com.svg"
+                          alt="иконка кнопки."
+                        />
+                      </button>
+                      <button class="create-poll__button" type="button">
+                        &#10006;
+                      </button>
+                    </div>
+                    <div class="create-poll__form-checkbox">
+                      <input
+                        type="checkbox"
+                        name="required"
+                        value="isRequired"
+                      />
+                      <span class="">Обязательно</span>
+                    </div>
+                  </div>
+                </div>
+                <ul class="create-poll__answers">
+                  <li class="create-poll__answer">
+                    <div class="create-poll__drag-button add-bgcolor-blue">
+                      <img
+                        class="create-poll__form-img"
+                        src="./images/dots.svg"
+                        alt="кнопка для перетаскивания."
+                      />
+                    </div>
+                    <input
+                      id="radio"
+                      type="radio"
+                      name="radio-btn"
+                      value=""
+                      disabled
+                    />
+                    <label class="create-poll__form-label">Ответ</label>
+                    <input
+                      type="text"
+                      class="create-poll__form-input"
+                      minlength="2"
+                      maxlength="40"
+                      required
+                      pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                    />
                     <button class="create-poll__button" type="button">
                       &#10006;
                     </button>
+                  </li>
+                  <li class="create-poll__answer">
+                    <div class="create-poll__drag-button add-bgcolor-blue">
+                      <img
+                        class="create-poll__form-img"
+                        src="./images/dots.svg"
+                        alt="кнопка для перетаскивания."
+                      />
+                    </div>
+                    <input
+                      id="radio"
+                      type="radio"
+                      name="radio-btn"
+                      value=""
+                      disabled
+                    />
+                    <label class="create-poll__form-label">Ответ</label>
+                    <input
+                      type="text"
+                      class="create-poll__form-input"
+                      minlength="2"
+                      maxlength="40"
+                      required
+                      pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                    />
+                    <button class="create-poll__button" type="button">
+                      &#10006;
+                    </button>
+                  </li>
+                </ul>
+                <button class="create-poll__button" type="button">+</button>
+              </form>
+            </li>
+
+            <li class="create-poll__question">
+              <div class="create-poll__drag-button add-bgcolor-purple">
+                <img
+                  class="create-poll__form-img"
+                  src="./images/dots.svg"
+                  alt="кнопка для перетаскивания."
+                />
+              </div>
+              <form class="create-poll__form add-border-purple">
+                <div class="create-poll__form-content">
+                  <label class="create-poll__form-label"
+                    >Название вопроса</label
+                  >
+                  <input
+                    type="text"
+                    class="create-poll__form-input"
+                    minlength="2"
+                    maxlength="40"
+                    required
+                    pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                  />
+                  <div class="create-poll__form-settings">
+                    <div class="create-poll__buttons">
+                      <button class="create-poll__button" type="button">
+                        <img
+                          class="create-poll__button-img"
+                          src="./images/copy-files-svgrepo-com.svg"
+                          alt="иконка кнопки."
+                        />
+                      </button>
+                      <button class="create-poll__button" type="button">
+                        &#10006;
+                      </button>
+                    </div>
+                    <div class="create-poll__form-checkbox">
+                      <input
+                        type="checkbox"
+                        name="checkbox-btn"
+                        value="isRequired"
+                      />
+                      <span class="">Обязательно</span>
+                    </div>
                   </div>
-                  <form class="create-poll__form-checkbox">
-                    <input type="checkbox" name="required" value="isRequired" />
-                    <span class="">Обязательно</span>
-                  </form>
                 </div>
+                <ul class="create-poll__answers">
+                  <li class="create-poll__answer">
+                    <div class="create-poll__drag-button add-bgcolor-purple">
+                      <img
+                        class="create-poll__form-img"
+                        src="./images/dots.svg"
+                        alt="кнопка для перетаскивания."
+                      />
+                    </div>
+                    <input
+                      id="checkbox"
+                      type="checkbox"
+                      name="checkbox-btn"
+                      value=""
+                      disabled
+                    />
+                    <label class="create-poll__form-label">Ответ</label>
+                    <input
+                      type="text"
+                      class="create-poll__form-input"
+                      minlength="2"
+                      maxlength="40"
+                      required
+                      pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                    />
+                    <button class="create-poll__button" type="button">
+                      &#10006;
+                    </button>
+                  </li>
+                  <li class="create-poll__answer">
+                    <div class="create-poll__drag-button add-bgcolor-purple">
+                      <img
+                        class="create-poll__form-img"
+                        src="./images/dots.svg"
+                        alt="кнопка для перетаскивания."
+                      />
+                    </div>
+                    <input
+                      id="checkbox"
+                      type="checkbox"
+                      name="checkbox-btn"
+                      value=""
+                      disabled
+                    />
+                    <label class="create-poll__form-label">Ответ</label>
+                    <input
+                      type="text"
+                      class="create-poll__form-input"
+                      minlength="2"
+                      maxlength="40"
+                      required
+                      pattern="^[A-Za-zА-ЯЁа-яё\s-]+$"
+                    />
+                    <button class="create-poll__button" type="button">
+                      &#10006;
+                    </button>
+                  </li>
+                </ul>
+                <button class="create-poll__button" type="button">+</button>
               </form>
             </li>
           </ul>
-          <ul class="create-poll__templates"></ul>
+          <ul class="templates">
+            <h2 class="templates__title">Выберите заготовку</h2>
+
+            <li class="template">
+              <div class="template__content">
+                <img
+                  class="template__drag-img"
+                  src="./images/dots-blue.svg"
+                  alt="кнопка для перетаскивания."
+                />
+                <p class="template__text">Выбор</p>
+              </div>
+              <img
+                class="template__icon"
+                src="./images/radio-icon.svg"
+                alt="иконка с изображением типа кнопок."
+              />
+            </li>
+
+            <li class="template">
+              <div class="template__content">
+                <img
+                  class="template__drag-img"
+                  src="./images/dots-purple.svg"
+                  alt="кнопка для перетаскивания."
+                />
+                <p class="template__text">Множественный выбор</p>
+              </div>
+              <img
+                class="template__icon"
+                src="./images/checkbox-icon.svg"
+                alt="иконка с изображением типа кнопок."
+              />
+            </li>
+          </ul>
         </div>
+      </section>
+
+      <section class="result">
+        <ul class="result-polls">
+          <li class="result-poll">
+            <form class="result__form">
+              <fieldset class="result__form-fieldset">
+                <legend class="result__form-index">1</legend>
+                <p class="result__form-text">Вопрос 1</p>
+                <div class="result__form-options">
+                  <input
+                    class="result__form-input"
+                    id="radio1"
+                    type="radio"
+                    name="check"
+                    value=""
+                  />
+                  <label for="radio1">1 вариант</label>
+                </div>
+                <div class="result__form-options">
+                  <input
+                    class="result__form-input"
+                    id="radio2"
+                    type="radio"
+                    name="check"
+                    value=""
+                  />
+                  <label for="radio2">2 вариант</label>
+                </div>
+              </fieldset>
+            </form>
+          </li>
+
+          <li class="result-poll">
+            <form class="result__form">
+              <fieldset class="result__form-fieldset">
+                <legend class="result__form-index">2</legend>
+                <p class="result__form-text">Вопрос 2</p>
+                <div class="result__form-options">
+                  <input
+                    class="result__form-input"
+                    id="checkbox1"
+                    type="checkbox"
+                    name="check"
+                    value=""
+                  />
+                  <label for="checkbos1">1 вариант</label>
+                </div>
+                <div class="result__form-options">
+                  <input
+                    class="result__form-input"
+                    id="checkbox2"
+                    type="checkbox"
+                    name="check"
+                    value=""
+                  />
+                  <label for="checkbos2">2 вариант</label>
+                </div>
+              </fieldset>
+            </form>
+          </li>
+        </ul>
       </section>
     </main>
     <script src="./dist/index.js"></script>

@@ -1,0 +1,43 @@
+.templates {
+  width: calc(25% - 20px);
+  padding: 20px;
+  margin: 0;
+  background-color: #fff;
+  margin-left: 20px;
+}
+
+.templates__title {
+  font-size: 23px;
+  line-height: 1.4;
+  color: black;
+  margin: 6px auto;
+}
+
+.template {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 3px;
+  border-top: 2px solid #edf1f7;
+}
+
+.template__content {
+  display: flex;
+  align-items: center;
+}
+
+.template__drag-img {
+  width: 25px;
+  height: 25px;
+}
+
+.template__text {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.template__icon {
+  width: 25px;
+  height: 25px;
+}

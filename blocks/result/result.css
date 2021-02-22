@@ -1,0 +1,45 @@
+.result {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 6px;
+  display: none;
+}
+
+.result-polls {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result-poll {
+  margin-top: 10px;
+}
+
+.result__form {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.result__form-fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #2196f3;
+  border-radius: 15px;
+  padding: 10px 12px;
+}
+
+.result__form-options {
+  margin: 3px 0;
+}
+
+.result__form-index {
+  color: #2196f3;
+  padding: 0 8px;
+}
+
+.result__form-text {
+  margin: 1px;
+}
+
+.result__form-input {
+}

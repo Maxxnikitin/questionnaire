@@ -1,22 +1,63 @@
 .create-poll {
   display: flex;
-  padding: 20xp;
   margin-right: 10px;
   min-height: 70vh;
 }
 
 .create-poll__questions {
+  width: 75%;
   padding: 20px;
   margin: 0;
   background-color: #fff;
 }
 
 .create-poll__question {
+  display: flex;
   list-style-type: none;
+  margin-bottom: 4px;
 }
 
 .create-poll__form {
+  background-color: #f3f3f4;
+  padding: 10px 20px 0;
+  width: 100%;
+}
+
+.create-poll__form-content {
   display: flex;
+  position: relative;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.create-poll__form-label {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+}
+
+.create-poll__form-input {
+  width: calc(100% - 40px);
+  padding: 6px 12px;
+  border: 1px solid #e5e6e7;
+  border-radius: 5px;
+  outline: none;
+  font-size: 13px;
+  line-height: 15px;
+  color: #676a6c;
+  transition: 0.15s;
+}
+
+.create-poll__drag-button {
+  display: flex;
+  cursor: grab;
+  color: #fff;
+}
+
+.create-poll__form-img {
+  width: 12px;
+  height: 20px;
+  margin: auto;
 }
 
 .create-poll__form-settings {
@@ -30,21 +71,80 @@
 
 .create-poll__button {
   border-radius: 50%;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #f3f3f4;
   color: #9b9b9b;
   border: none;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .create-poll__button:first-child {
   margin-right: 5px;
 }
 
-..create-poll__button:hover {
-  background-color: #666;
-  color: green;
+.create-poll__button:hover {
+  background-color: #ddd;
+}
+
+.create-poll__button-img {
+  height: 50%;
 }
 
 .create-poll__form-checkbox {
+  display: flex;
+}
+
+.create-poll__answers {
+  padding: 0;
+  margin: 4px 0;
+}
+
+.create-poll__answer {
+  position: relative;
+  display: flex;
+  min-height: 38px;
+  font-size: 13px;
+  line-height: 15px;
+  margin-bottom: 4px;
+}
+
+.create-poll__answer:last-child {
+  margin-bottom: 0;
+}
+
+.create-poll__answer .create-poll__form-label {
+  left: 48px;
+}
+
+.create-poll__answer .create-poll__button {
+  align-self: center;
+}
+
+.create-poll__answer #checkbox {
+  align-self: center;
+}
+
+.create-poll__answer #radio {
+  align-self: center;
+}
+
+.add-border-blue {
+  border: 1px solid rgb(33, 150, 243);
+}
+
+.add-border-purple {
+  border: 1px solid rgb(156, 39, 176);
+}
+
+.add-bgcolor-blue {
+  background-color: rgb(33, 150, 243);
+}
+
+.add-bgcolor-purple {
+  background-color: rgb(156, 39, 176);
 }
