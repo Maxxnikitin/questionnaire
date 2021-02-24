@@ -91,66 +91,8 @@
         </div>
       </section>
 
-      <section class="result">
-        <ul class="result-polls">
-          <li class="result-poll">
-            <form class="result__form">
-              <fieldset class="result__form-fieldset">
-                <legend class="result__form-index">1</legend>
-                <p class="result__form-text">Вопрос 1</p>
-                <div class="result__form-options">
-                  <input
-                    class="result__form-input"
-                    id="radio1"
-                    type="radio"
-                    name="check"
-                    value=""
-                  />
-                  <label for="radio1">1 вариант</label>
-                </div>
-                <div class="result__form-options">
-                  <input
-                    class="result__form-input"
-                    id="radio2"
-                    type="radio"
-                    name="check"
-                    value=""
-                  />
-                  <label for="radio2">2 вариант</label>
-                </div>
-              </fieldset>
-            </form>
-          </li>
-
-          <li class="result-poll">
-            <form class="result__form">
-              <fieldset class="result__form-fieldset">
-                <legend class="result__form-index">2</legend>
-                <p class="result__form-text">Вопрос 2</p>
-                <div class="result__form-options">
-                  <input
-                    class="result__form-input"
-                    id="checkbox1"
-                    type="checkbox"
-                    name="check"
-                    value=""
-                  />
-                  <label for="checkbos1">1 вариант</label>
-                </div>
-                <div class="result__form-options">
-                  <input
-                    class="result__form-input"
-                    id="checkbox2"
-                    type="checkbox"
-                    name="check"
-                    value=""
-                  />
-                  <label for="checkbos2">2 вариант</label>
-                </div>
-              </fieldset>
-            </form>
-          </li>
-        </ul>
+      <section class="result disabled">
+        <ul class="result-polls"></ul>
       </section>
 
       <template id="poll">
@@ -223,6 +165,31 @@
           />
           <button class="create-poll__button" type="button">&#10006;</button>
         </li>
+      </template>
+
+      <template id="result">
+        <li class="result-poll">
+          <form class="result__form">
+            <fieldset class="result__form-fieldset">
+              <legend class="result__form-index">1</legend>
+              <p class="result__form-text">Вопрос 1</p>
+              <div class="result__form-options"></div>
+            </fieldset>
+          </form>
+        </li>
+      </template>
+
+      <template id="option">
+        <div class="result__form-option">
+          <input
+            class="result__form-input"
+            id="result-type"
+            type=""
+            name="check"
+            value=""
+          />
+          <label id="answer" for="result-type">1 вариант</label>
+        </div>
       </template>
     </main>
     <script src="./dist/index.js"></script>

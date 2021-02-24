@@ -149,3 +149,7 @@
 .add-bgcolor-purple {
   background-color: rgb(156, 39, 176);
 }
+
+.disabled {
+  display: none;
+}

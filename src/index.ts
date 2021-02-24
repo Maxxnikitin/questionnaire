@@ -1,31 +1,28 @@
 const pollTemplate: HTMLTemplateElement = document.querySelector("#poll");
 const pollTemplateContent: DocumentFragment = pollTemplate.content;
-const pollContainer: Element = document.querySelector(
+const pollContainer: HTMLElement = document.querySelector(
   ".create-poll__questions"
 );
 
 const answerTemplate: HTMLTemplateElement = document.querySelector("#answer");
 const answerTemplateContent: DocumentFragment = answerTemplate.content;
 
-const templateRadio: Element = document.querySelector("#template-radio");
-const templateCheckbox: Element = document.querySelector("#template-checkbox");
+const resultTemplate: HTMLTemplateElement = document.querySelector("#result");
+const resultTemplateContent: DocumentFragment = resultTemplate.content;
+const resultContainer: HTMLElement = document.querySelector(".result-polls");
 
-const testBtn: Element = document.querySelector("#btn-test");
+const optionTemplate: HTMLTemplateElement = document.querySelector("#option");
+const optionTemplateContent: DocumentFragment = optionTemplate.content;
 
-let pollId: number = 1;
-let answerId: number = 1;
+const templateRadio: HTMLElement = document.querySelector("#template-radio");
+const templateCheckbox: HTMLElement = document.querySelector(
+  "#template-checkbox"
+);
 
-// функция добавления id опросникам
-const addPollId: (elem: Node) => void = (elem) => {
-  (<Element>elem).setAttribute("id", pollId.toString());
-  pollId++;
-};
+const testBtn: HTMLButtonElement = document.querySelector("#btn-test");
 
-// функция добавления id ответам
-const addAnswerId: (elem: Node) => void = (elem) => {
-  (<Element>elem).setAttribute("id", answerId.toString());
-  answerId++;
-};
+const content: HTMLElement = document.querySelector(".content");
+const result: HTMLElement = document.querySelector(".result");
 
 function addRadioPoll(): void {
   const pollElement: Node = pollTemplateContent
@@ -33,22 +30,23 @@ function addRadioPoll(): void {
     .cloneNode(true);
 
   // находим текстовый инпут
-  const input = (<Element>pollElement).querySelector(
+  const input: HTMLInputElement = (<Element>pollElement).querySelector(
     ".create-poll__form-input"
   );
   // находим его label
-  const label = (<Element>pollElement).querySelector(
+  const label: HTMLElement = (<Element>pollElement).querySelector(
     ".create-poll__form-label"
   );
 
   // находим кнопку закрытия
-  const closeBtn = (<Element>pollElement).querySelector("#close");
+  const closeBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
+    "#close"
+  );
 
   // находим кнопку добавления строчки с вариантом ответа
-  const addAnswerBtn = (<Element>pollElement).querySelector("#add-answer");
-
-  // добавляем id
-  addPollId(pollElement);
+  const addAnswerBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
+    "#add-answer"
+  );
 
   // добавляем рамку голубого цвета
   (<Element>pollElement)
@@ -82,25 +80,24 @@ function addRadioPoll(): void {
       .cloneNode(true);
 
     // находим текстовый инпут
-    const input = (<Element>answerElement).querySelector(
+    const input: HTMLInputElement = (<Element>answerElement).querySelector(
       ".create-poll__form-input"
     );
     // находим его label
-    const label = (<Element>answerElement).querySelector(
+    const label: HTMLElement = (<Element>answerElement).querySelector(
       ".create-poll__form-label"
     );
 
     // находим input, чтобы сделать его radio или checkbox
-    const answerBox = (<Element>answerElement).querySelector("#answer-box");
+    const answerBox: HTMLInputElement = (<Element>answerElement).querySelector(
+      "#answer-box"
+    );
     answerBox.setAttribute("type", "radio");
 
     // находим кнопку закрытия
-    const closeBtn = (<Element>answerElement).querySelector(
+    const closeBtn: HTMLButtonElement = (<Element>answerElement).querySelector(
       ".create-poll__button"
     );
-
-    // добавляем id
-    addAnswerId(answerElement);
 
     // добавляем синий фон в левую часть опроса
     (<Element>answerElement)
@@ -124,7 +121,7 @@ function addRadioPoll(): void {
     });
 
     // находим нужный контейнер для вставки через ближайшего родителя
-    const answerContainer: Element = addAnswerBtn
+    const answerContainer: HTMLElement = addAnswerBtn
       .closest(".create-poll__form")
       .querySelector(".create-poll__answers");
 
@@ -142,22 +139,23 @@ function addCheckboxPoll(): void {
     .cloneNode(true);
 
   // находим текстовый инпут
-  const input = (<Element>pollElement).querySelector(
+  const input: HTMLInputElement = (<Element>pollElement).querySelector(
     ".create-poll__form-input"
   );
   // находим его label
-  const label = (<Element>pollElement).querySelector(
+  const label: HTMLElement = (<Element>pollElement).querySelector(
     ".create-poll__form-label"
   );
 
   // находим кнопку закрытия
-  const closeBtn = (<Element>pollElement).querySelector("#close");
+  const closeBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
+    "#close"
+  );
 
   // находим кнопку добавления строчки с вариантом ответа
-  const addAnswerBtn = (<Element>pollElement).querySelector("#add-answer");
-
-  // добавляем id
-  addPollId(pollElement);
+  const addAnswerBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
+    "#add-answer"
+  );
 
   // добавляем рамку фиолетового цвета
   (<Element>pollElement)
@@ -191,25 +189,24 @@ function addCheckboxPoll(): void {
       .cloneNode(true);
 
     // находим текстовый инпут
-    const input = (<Element>answerElement).querySelector(
+    const input: HTMLInputElement = (<Element>answerElement).querySelector(
       ".create-poll__form-input"
     );
     // находим его label
-    const label = (<Element>answerElement).querySelector(
+    const label: HTMLElement = (<Element>answerElement).querySelector(
       ".create-poll__form-label"
     );
 
     // находим input, чтобы сделать его radio или checkbox
-    const answerBox = (<Element>answerElement).querySelector("#answer-box");
+    const answerBox: HTMLInputElement = (<Element>answerElement).querySelector(
+      "#answer-box"
+    );
     answerBox.setAttribute("type", "checkbox");
 
     // находим кнопку закрытия
-    const closeBtn = (<Element>answerElement).querySelector(
+    const closeBtn: HTMLButtonElement = (<Element>answerElement).querySelector(
       ".create-poll__button"
     );
-
-    // добавляем id
-    addAnswerId(answerElement);
 
     // добавляем фиолетовый фон в левую часть опроса
     (<Element>answerElement)
@@ -249,32 +246,105 @@ templateRadio.addEventListener("click", addRadioPoll);
 
 templateCheckbox.addEventListener("click", addCheckboxPoll);
 
-// функция отправки данных в LocalStorage
-function setPolls(): void {
+// функция сбора данных для превью
+function createPollsData(): Object {
   const pollsData: Object = {};
-  const allPolls: Element[] = Array.from(
+  const allPolls: HTMLElement[] = Array.from(
     document.querySelectorAll(".create-poll__question")
   );
 
-  allPolls.forEach((poll) => {
+  allPolls.forEach((poll, index) => {
     const pollObj: Object = {};
 
     const pollInput: HTMLInputElement = poll.querySelector("#title");
     pollObj["title"] = pollInput.value;
 
+    const isRadio: boolean = !!poll.querySelector(".add-bgcolor-blue");
+    pollObj["type"] = isRadio ? "radio" : "checkbox";
+
     const allAnswers: HTMLInputElement[] = Array.from(
       poll.querySelectorAll("#answer")
     );
-    allAnswers.forEach((answer) => {
-      const id: string = answer
-        .closest(".create-poll__answer")
-        .getAttribute("id");
-
-      pollObj[id] = answer.value;
+    allAnswers.forEach((answer, index) => {
+      pollObj[index] = answer.value;
     });
 
-    console.log(pollObj);
+    pollsData[index] = pollObj;
   });
+  return pollsData;
+}
+
+// функция отправки данных в превью
+function setPolls(): void {
+  if (content.classList.contains("disabled")) {
+    content.classList.remove("disabled");
+    result.classList.add("disabled");
+
+    Array.from(resultContainer.querySelectorAll(".result-poll")).forEach(
+      (poll) => {
+        poll.remove();
+      }
+    );
+    return;
+  }
+
+  // забираем объект с данными
+  const data = createPollsData();
+
+  // проходим циклом по данным и вставляем в разметку
+  for (let num in data) {
+    const resultElement: Node = resultTemplateContent
+      .querySelector(".result-poll")
+      .cloneNode(true);
+
+    // находим номер вопроса по порядку
+    const index: HTMLElement = (<Element>resultElement).querySelector(
+      ".result__form-index"
+    );
+
+    // находим текст вопроса
+    const text: HTMLElement = (<Element>resultElement).querySelector(
+      ".result__form-text"
+    );
+
+    resultContainer.append(resultElement);
+
+    const poll = data[num];
+    text.textContent = poll["title"];
+    const pollIndex: number = +num;
+    index.textContent = (pollIndex + 1).toString();
+    const optionContainer: HTMLElement = (<Element>resultElement).querySelector(
+      ".result__form-options"
+    );
+
+    const inputType: string = poll["type"];
+
+    for (let elem in poll) {
+      if (elem === "title" || elem === "type") {
+        continue;
+      }
+      const optionElement: Node = optionTemplateContent
+        .querySelector(".result__form-option")
+        .cloneNode(true);
+
+      // находим input, чтобы менять тип на radio или checkbox
+      const input: HTMLInputElement = (<Element>optionElement).querySelector(
+        ".result__form-input"
+      );
+
+      // находим текст ответа
+      const answer: HTMLElement = (<Element>optionElement).querySelector(
+        "#answer"
+      );
+
+      answer.textContent = poll[elem];
+      input.setAttribute("type", inputType);
+      optionContainer.append(optionElement);
+    }
+  }
+
+  result.classList.remove("disabled");
+  content.classList.add("disabled");
 }
 
 testBtn.addEventListener("click", setPolls);
