@@ -1,0 +1,36 @@
+.button {
+  font-family: inherit;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 3px;
+  filter: brightness(1);
+  margin-right: 10px;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.button:hover {
+  filter: brightness(0.9);
+}
+
+.button_save {
+  background-color: #1ab394;
+  color: #fff;
+  border: 1px solid #1ab394;
+}
+
+.button_cancel {
+  border: 1px solid #e7eaec;
+  text-decoration: none;
+  color: inherit;
+}
+
+.button_test {
+  background-color: #1c84c6;
+  border: 1px solid #1c84c6;
+  color: #fff;
+}

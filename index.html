@@ -11,10 +11,36 @@
     <meta name="keywords" content="HTML5, CSS, TypeScript" />
     <meta name="author" content="Максим Никитин" />
     <title>Опросник</title>
-    <base target="_blank" />
   </head>
   <body>
-    <div class="page"></div>
-    <script src="./dist/index.js"></script>
+    <main class="page">
+      <section class="table__menu">
+        <h1 class="table__title">Мои опросы</h1>
+        <a class="table__create-btn" href="./create"
+          ><span class="table__plus"></span>Создать новый опрос</a
+        >
+      </section>
+      <table class="table">
+        <thead>
+          <tr class="table__headers">
+            <th class="table__header table__header_1col">Дата</th>
+            <th class="table__header table__header_2col">Наименование</th>
+            <th class="table__header table__header_3col">
+              Количество вопросов
+            </th>
+            <th class="table__header table__header_4col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table__rows">
+            <td class="table__row">БИК</td>
+            <td class="table__row">Название</td>
+            <td class="table__row">Корсчёт</td>
+            <td class="table__row">Адрес</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <script></script>
   </body>
 </html>

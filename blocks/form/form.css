@@ -1,0 +1,29 @@
+.form {
+}
+
+.form__title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.form__fieldset {
+  border: none;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+.form__input {
+  width: calc(100% - 40px);
+  padding: 8px 12px;
+  border: 1px solid #e5e6e7;
+  outline: none;
+  font-size: 13px;
+  line-height: 15px;
+  color: #676a6c;
+  transition: 0.15s;
+}
+
+.form__input:focus {
+  border-color: green;
+}
