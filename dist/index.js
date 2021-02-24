@@ -1,3 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("./utils");
+const createPollsData_1 = require("./createPollsData");
 const pollTemplateContent = (document.querySelector("#poll")).content;
 const pollContainer = document.querySelector(".create-poll__questions");
 const answerTemplateContent = (document.querySelector("#answer")).content;
@@ -23,9 +27,9 @@ function addAnswerBtnListenner(btn, colorClass) {
         answerBox.setAttribute("type", "radio");
         // находим кнопку закрытия
         const closeBtn = answerElement.querySelector(".create-poll__button");
-        Utils.addDragColor(answerElement, colorClass);
-        Utils.addInputListenner(input, label);
-        Utils.addDeleteBtnListenner(closeBtn, ".create-poll__answer");
+        utils_1.addDragColor(answerElement, colorClass);
+        utils_1.addInputListenner(input, label);
+        utils_1.addDeleteBtnListenner(closeBtn, ".create-poll__answer");
         // находим нужный контейнер для вставки через ближайшего родителя
         const answerContainer = btn
             .closest(".create-poll__form")
@@ -44,10 +48,10 @@ function addRadioPoll() {
     const closeBtn = pollElement.querySelector("#close");
     // находим кнопку добавления строчки с вариантом ответа
     const addAnswerBtn = pollElement.querySelector("#add-answer");
-    Utils.addInputListenner(input, label);
-    Utils.addBorderColor(pollElement, "add-border-blue");
-    Utils.addDragColor(pollElement, "add-bgcolor-blue");
-    Utils.addDeleteBtnListenner(closeBtn, ".create-poll__question");
+    utils_1.addInputListenner(input, label);
+    utils_1.addBorderColor(pollElement, "add-border-blue");
+    utils_1.addDragColor(pollElement, "add-bgcolor-blue");
+    utils_1.addDeleteBtnListenner(closeBtn, ".create-poll__question");
     addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-blue");
     // добавляем элемент на страницу
     pollContainer.append(pollElement);
@@ -62,10 +66,10 @@ function addCheckboxPoll() {
     const closeBtn = pollElement.querySelector("#close");
     // находим кнопку добавления строчки с вариантом ответа
     const addAnswerBtn = pollElement.querySelector("#add-answer");
-    Utils.addBorderColor(pollElement, "add-border-purple");
-    Utils.addDragColor(pollElement, "add-bgcolor-purple");
-    Utils.addInputListenner(input, label);
-    Utils.addDeleteBtnListenner(closeBtn, ".create-poll__question");
+    utils_1.addBorderColor(pollElement, "add-border-purple");
+    utils_1.addDragColor(pollElement, "add-bgcolor-purple");
+    utils_1.addInputListenner(input, label);
+    utils_1.addDeleteBtnListenner(closeBtn, ".create-poll__question");
     addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-purple");
     // добавляем элемент на страницу
     pollContainer.append(pollElement);
@@ -81,7 +85,7 @@ function setPolls() {
         return;
     }
     // забираем объект с данными
-    const data = Utils.createPollsData();
+    const data = createPollsData_1.createPollsData();
     // проходим циклом по данным и вставляем в разметку
     for (let num in data) {
         const resultElement = (resultTemplateContent.querySelector(".result-poll").cloneNode(true));
