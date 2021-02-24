@@ -48,8 +48,8 @@ function setPolls() {
             answer.textContent = poll[elem];
             input.setAttribute("type", inputType);
             optionContainer.append(optionElement);
-            resultContainer.append(resultElement);
         }
+        resultContainer.append(resultElement);
     }
     result.classList.remove("disabled");
     content.classList.add("disabled");
