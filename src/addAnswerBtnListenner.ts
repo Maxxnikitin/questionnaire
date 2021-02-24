@@ -32,7 +32,12 @@ export function addAnswerBtnListenner(
     const answerBox: HTMLInputElement = answerElement.querySelector(
       "#answer-box"
     );
-    answerBox.setAttribute("type", "radio");
+    
+    // определяем нужный тип
+    const inputType: string = colorClass === "add-bgcolor-blue" ? "radio" : "checkbox";
+
+    // и добавляем в разметку
+    answerBox.setAttribute("type", inputType);
 
     // находим кнопку закрытия
     const closeBtn: HTMLButtonElement = answerElement.querySelector(
