@@ -3,8 +3,8 @@ import {
   addDeleteBtnListenner,
   addBorderColor,
   addDragColor,
-} from "./utils";
-import {addAnswerBtnListenner} from "./addAnswerBtnListenner";
+} from "./utils.js";
+import {addAnswerBtnListenner} from "./addAnswerBtnListenner.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")

@@ -2,7 +2,7 @@ import {
   addInputListenner,
   addDeleteBtnListenner,
   addDragColor,
-} from "./utils";
+} from "./utils.js";
 
 const answerTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#answer")

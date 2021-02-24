@@ -1,6 +1,6 @@
-import { createPollsData } from "./createPollsData";
-import {addRadioPoll} from "./addRadioPoll";
-import {addCheckboxPoll} from "./addCheckboxPoll";
+import { createPollsData } from "./createPollsData.js";
+import {addRadioPoll} from "./addRadioPoll.js";
+import {addCheckboxPoll} from "./addCheckboxPoll.js";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#result")
