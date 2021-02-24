@@ -1,10 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const utils_1 = require("./utils");
-const createPollsData_1 = require("./createPollsData");
-const pollTemplateContent = (document.querySelector("#poll")).content;
-const pollContainer = document.querySelector(".create-poll__questions");
-const answerTemplateContent = (document.querySelector("#answer")).content;
+import { createPollsData } from "./createPollsData.js";
+import { addRadioPoll } from "./addRadioPoll.js";
+import { addCheckboxPoll } from "./addCheckboxPoll.js";
 const resultTemplateContent = (document.querySelector("#result")).content;
 const resultContainer = document.querySelector(".result-polls");
 const optionTemplateContent = (document.querySelector("#option")).content;
@@ -13,67 +9,6 @@ const templateCheckbox = document.querySelector("#template-checkbox");
 const testBtn = document.querySelector("#btn-test");
 const content = document.querySelector(".content");
 const result = document.querySelector(".result");
-function addAnswerBtnListenner(btn, colorClass) {
-    btn.addEventListener("click", () => {
-        const answerElement = (answerTemplateContent
-            .querySelector(".create-poll__answer")
-            .cloneNode(true));
-        // находим текстовый инпут
-        const input = answerElement.querySelector(".create-poll__form-input");
-        // находим его label
-        const label = answerElement.querySelector(".create-poll__form-label");
-        // находим input, чтобы сделать его radio или checkbox
-        const answerBox = answerElement.querySelector("#answer-box");
-        answerBox.setAttribute("type", "radio");
-        // находим кнопку закрытия
-        const closeBtn = answerElement.querySelector(".create-poll__button");
-        utils_1.addDragColor(answerElement, colorClass);
-        utils_1.addInputListenner(input, label);
-        utils_1.addDeleteBtnListenner(closeBtn, ".create-poll__answer");
-        // находим нужный контейнер для вставки через ближайшего родителя
-        const answerContainer = btn
-            .closest(".create-poll__form")
-            .querySelector(".create-poll__answers");
-        // добавляем вариант ответа на страницу
-        answerContainer.append(answerElement);
-    });
-}
-function addRadioPoll() {
-    const pollElement = (pollTemplateContent.querySelector(".create-poll__question").cloneNode(true));
-    // находим текстовый инпут
-    const input = pollElement.querySelector(".create-poll__form-input");
-    // находим его label
-    const label = pollElement.querySelector(".create-poll__form-label");
-    // находим кнопку закрытия
-    const closeBtn = pollElement.querySelector("#close");
-    // находим кнопку добавления строчки с вариантом ответа
-    const addAnswerBtn = pollElement.querySelector("#add-answer");
-    utils_1.addInputListenner(input, label);
-    utils_1.addBorderColor(pollElement, "add-border-blue");
-    utils_1.addDragColor(pollElement, "add-bgcolor-blue");
-    utils_1.addDeleteBtnListenner(closeBtn, ".create-poll__question");
-    addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-blue");
-    // добавляем элемент на страницу
-    pollContainer.append(pollElement);
-}
-function addCheckboxPoll() {
-    const pollElement = (pollTemplateContent.querySelector(".create-poll__question").cloneNode(true));
-    // находим текстовый инпут
-    const input = pollElement.querySelector(".create-poll__form-input");
-    // находим его label
-    const label = pollElement.querySelector(".create-poll__form-label");
-    // находим кнопку закрытия
-    const closeBtn = pollElement.querySelector("#close");
-    // находим кнопку добавления строчки с вариантом ответа
-    const addAnswerBtn = pollElement.querySelector("#add-answer");
-    utils_1.addBorderColor(pollElement, "add-border-purple");
-    utils_1.addDragColor(pollElement, "add-bgcolor-purple");
-    utils_1.addInputListenner(input, label);
-    utils_1.addDeleteBtnListenner(closeBtn, ".create-poll__question");
-    addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-purple");
-    // добавляем элемент на страницу
-    pollContainer.append(pollElement);
-}
 // функция отправки данных в превью
 function setPolls() {
     if (content.classList.contains("disabled")) {
@@ -85,7 +20,7 @@ function setPolls() {
         return;
     }
     // забираем объект с данными
-    const data = createPollsData_1.createPollsData();
+    const data = createPollsData();
     // проходим циклом по данным и вставляем в разметку
     for (let num in data) {
         const resultElement = (resultTemplateContent.querySelector(".result-poll").cloneNode(true));

@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createPollsData = void 0;
 // функция сбора данных для превью
-function createPollsData() {
+export function createPollsData() {
     const pollsData = {};
     const allPolls = Array.from(document.querySelectorAll(".create-poll__question"));
     allPolls.forEach((poll, index) => {
@@ -19,4 +16,3 @@ function createPollsData() {
     });
     return pollsData;
 }
-exports.createPollsData = createPollsData;
