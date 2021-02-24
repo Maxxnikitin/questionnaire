@@ -1,4 +1,10 @@
-import { addRadioPoll } from "./addRadioPoll";
+import {
+  addInputListenner,
+  addDeleteBtnListenner,
+  addBorderColor,
+  addDragColor,
+} from "./utils";
+import { createPollsData } from "./createPollsData";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
@@ -30,6 +36,88 @@ const testBtn: HTMLButtonElement = document.querySelector("#btn-test");
 const content: HTMLElement = document.querySelector(".content");
 const result: HTMLElement = document.querySelector(".result");
 
+function addAnswerBtnListenner(
+  btn: HTMLButtonElement,
+  colorClass: string
+): void {
+  btn.addEventListener("click", () => {
+    const answerElement: HTMLElement = <HTMLElement>(
+      answerTemplateContent
+        .querySelector(".create-poll__answer")
+        .cloneNode(true)
+    );
+
+    // находим текстовый инпут
+    const input: HTMLInputElement = answerElement.querySelector(
+      ".create-poll__form-input"
+    );
+    // находим его label
+    const label: HTMLElement = answerElement.querySelector(
+      ".create-poll__form-label"
+    );
+
+    // находим input, чтобы сделать его radio или checkbox
+    const answerBox: HTMLInputElement = answerElement.querySelector(
+      "#answer-box"
+    );
+    answerBox.setAttribute("type", "radio");
+
+    // находим кнопку закрытия
+    const closeBtn: HTMLButtonElement = answerElement.querySelector(
+      ".create-poll__button"
+    );
+
+    addDragColor(answerElement, colorClass);
+
+    addInputListenner(input, label);
+
+    addDeleteBtnListenner(closeBtn, ".create-poll__answer");
+
+    // находим нужный контейнер для вставки через ближайшего родителя
+    const answerContainer: HTMLElement = btn
+      .closest(".create-poll__form")
+      .querySelector(".create-poll__answers");
+
+    // добавляем вариант ответа на страницу
+    answerContainer.append(answerElement);
+  });
+}
+
+function addRadioPoll(): void {
+  const pollElement: HTMLElement = <HTMLElement>(
+    pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
+  );
+
+  // находим текстовый инпут
+  const input: HTMLInputElement = pollElement.querySelector(
+    ".create-poll__form-input"
+  );
+  // находим его label
+  const label: HTMLElement = pollElement.querySelector(
+    ".create-poll__form-label"
+  );
+
+  // находим кнопку закрытия
+  const closeBtn: HTMLButtonElement = pollElement.querySelector("#close");
+
+  // находим кнопку добавления строчки с вариантом ответа
+  const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
+    "#add-answer"
+  );
+
+  addInputListenner(input, label);
+
+  addBorderColor(pollElement, "add-border-blue");
+  addDragColor(pollElement, "add-bgcolor-blue");
+
+  addDeleteBtnListenner(closeBtn, ".create-poll__question");
+
+  addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-blue");
+
+  // добавляем элемент на страницу
+  pollContainer.append(pollElement);
+}
+
 function addCheckboxPoll(): void {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
@@ -52,123 +140,17 @@ function addCheckboxPoll(): void {
     "#add-answer"
   );
 
-  // добавляем рамку фиолетового цвета
-  pollElement
-    .querySelector(".create-poll__form")
-    .classList.add("add-border-purple");
+  addBorderColor(pollElement, "add-border-purple");
+  addDragColor(pollElement, "add-bgcolor-purple");
 
-  // добавляем фиолетовый фон в левую часть опроса
-  pollElement
-    .querySelector(".create-poll__drag-button")
-    .classList.add("add-bgcolor-purple");
+  addInputListenner(input, label);
 
-  // добавляем слушателя на input, чтобы сдвигать label при фокусе
-  input.addEventListener("focus", () => {
-    label.classList.add("on-focus");
-  });
+  addDeleteBtnListenner(closeBtn, ".create-poll__question");
 
-  // добавляем слушателя на input, чтобы сдвигать label обратно при блюре
-  input.addEventListener("blur", () => {
-    input.value === "" && label.classList.remove("on-focus");
-  });
-
-  // добавляем слушателя на удаление
-  closeBtn.addEventListener("click", () => {
-    const element = closeBtn.closest(".create-poll__question");
-    element.remove();
-  });
-
-  addAnswerBtn.addEventListener("click", () => {
-    const answerElement: HTMLElement = <HTMLElement>(
-      answerTemplateContent
-        .querySelector(".create-poll__answer")
-        .cloneNode(true)
-    );
-
-    // находим текстовый инпут
-    const input: HTMLInputElement = answerElement.querySelector(
-      ".create-poll__form-input"
-    );
-    // находим его label
-    const label: HTMLElement = answerElement.querySelector(
-      ".create-poll__form-label"
-    );
-
-    // находим input, чтобы сделать его radio или checkbox
-    const answerBox: HTMLInputElement = answerElement.querySelector(
-      "#answer-box"
-    );
-    answerBox.setAttribute("type", "checkbox");
-
-    // находим кнопку закрытия
-    const closeBtn: HTMLButtonElement = answerElement.querySelector(
-      ".create-poll__button"
-    );
-
-    // добавляем фиолетовый фон в левую часть опроса
-    answerElement
-      .querySelector(".create-poll__drag-button")
-      .classList.add("add-bgcolor-purple");
-
-    // добавляем слушателя на input, чтобы сдвигать label при фокусе
-    input.addEventListener("focus", () => {
-      label.classList.add("on-focus");
-    });
-
-    // добавляем слушателя на input, чтобы сдвигать label обратно при блюре
-    input.addEventListener("blur", () => {
-      input.value === "" && label.classList.remove("on-focus");
-    });
-
-    // добавляем слушателя на удаление
-    closeBtn.addEventListener("click", () => {
-      const element = closeBtn.closest(".create-poll__answer");
-      element.remove();
-    });
-
-    // находим нужный контейнер для вставки через ближайшего родителя
-    const answerContainer: HTMLElement = addAnswerBtn
-      .closest(".create-poll__form")
-      .querySelector(".create-poll__answers");
-
-    // добавляем вариант ответа на страницу
-    answerContainer.append(answerElement);
-  });
+  addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-purple");
 
   // добавляем элемент на страницу
   pollContainer.append(pollElement);
-}
-
-templateRadio.addEventListener("click", addRadioPoll);
-
-templateCheckbox.addEventListener("click", addCheckboxPoll);
-
-// функция сбора данных для превью
-function createPollsData(): Object {
-  const pollsData: Object = {};
-  const allPolls: HTMLElement[] = Array.from(
-    document.querySelectorAll(".create-poll__question")
-  );
-
-  allPolls.forEach((poll, index) => {
-    const pollObj: Object = {};
-
-    const pollInput: HTMLInputElement = poll.querySelector("#title");
-    pollObj["title"] = pollInput.value;
-
-    const isRadio: boolean = !!poll.querySelector(".add-bgcolor-blue");
-    pollObj["type"] = isRadio ? "radio" : "checkbox";
-
-    const allAnswers: HTMLInputElement[] = Array.from(
-      poll.querySelectorAll("#answer")
-    );
-    allAnswers.forEach((answer, index) => {
-      pollObj[index] = answer.value;
-    });
-
-    pollsData[index] = pollObj;
-  });
-  return pollsData;
 }
 
 // функция отправки данных в превью
@@ -186,7 +168,7 @@ function setPolls(): void {
   }
 
   // забираем объект с данными
-  const data = createPollsData();
+  const data: Object = createPollsData();
 
   // проходим циклом по данным и вставляем в разметку
   for (let num in data) {
@@ -202,9 +184,7 @@ function setPolls(): void {
     // находим текст вопроса
     const text: HTMLElement = resultElement.querySelector(".result__form-text");
 
-    resultContainer.append(resultElement);
-
-    const poll = data[num];
+    const poll: Object = data[num];
     text.textContent = poll["title"];
     const pollIndex: number = +num;
     index.textContent = (pollIndex + 1).toString();
@@ -235,11 +215,17 @@ function setPolls(): void {
       answer.textContent = poll[elem];
       input.setAttribute("type", inputType);
       optionContainer.append(optionElement);
+
+      resultContainer.append(resultElement);
     }
   }
 
   result.classList.remove("disabled");
   content.classList.add("disabled");
 }
+
+templateRadio.addEventListener("click", addRadioPoll);
+
+templateCheckbox.addEventListener("click", addCheckboxPoll);
 
 testBtn.addEventListener("click", setPolls);
