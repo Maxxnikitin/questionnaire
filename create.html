@@ -38,7 +38,7 @@
             />
           </fieldset>
           <div class="form__buttons">
-            <button class="button button_save" id="btn-save" type="submit">
+            <button class="button button_save" id="btn-save" type="button">
               Сохранить
             </button>
             <a class="button button_cancel" href="/"> Отмена </a>
@@ -130,8 +130,8 @@
                   </button>
                 </div>
                 <div class="create-poll__form-checkbox">
-                  <input type="checkbox" name="required" value="isRequired" />
-                  <span class="">Обязательно</span>
+                  <input id='required' type="checkbox" name="required" value="isRequired" />
+                  <label for='required' class="">Обязательно</span>
                 </div>
               </div>
             </div>
@@ -192,6 +192,6 @@
         </div>
       </template>
     </main>
-    <script src="./dist/index.js"></script>
+    <script src="./dist/index.js" type='module'></script>
   </body>
 </html>
