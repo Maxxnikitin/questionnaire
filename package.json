@@ -1,0 +1,25 @@
+{
+  "name": "polls",
+  "version": "1.0.0",
+  "description": "Тестовый вариант опросника",
+  "main": "distr/index.js",
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "typescript": "^4.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxxnikitin/questionnaire.git"
+  },
+  "author": "Maxx Nikitin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maxxnikitin/questionnaire/issues"
+  },
+  "homepage": "https://github.com/Maxxnikitin/questionnaire#readme"
+}
