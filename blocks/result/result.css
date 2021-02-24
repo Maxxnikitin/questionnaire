@@ -17,6 +17,8 @@
 .result__form {
   font-size: 13px;
   line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .result__form-fieldset {

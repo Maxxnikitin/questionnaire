@@ -25,36 +25,34 @@ const content: HTMLElement = document.querySelector(".content");
 const result: HTMLElement = document.querySelector(".result");
 
 function addRadioPoll(): void {
-  const pollElement: Node = pollTemplateContent
-    .querySelector(".create-poll__question")
-    .cloneNode(true);
+  const pollElement: HTMLElement = <HTMLElement>(
+    pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
+  );
 
   // находим текстовый инпут
-  const input: HTMLInputElement = (<Element>pollElement).querySelector(
+  const input: HTMLInputElement = pollElement.querySelector(
     ".create-poll__form-input"
   );
   // находим его label
-  const label: HTMLElement = (<Element>pollElement).querySelector(
+  const label: HTMLElement = pollElement.querySelector(
     ".create-poll__form-label"
   );
 
   // находим кнопку закрытия
-  const closeBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
-    "#close"
-  );
+  const closeBtn: HTMLButtonElement = pollElement.querySelector("#close");
 
   // находим кнопку добавления строчки с вариантом ответа
-  const addAnswerBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
+  const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
     "#add-answer"
   );
 
   // добавляем рамку голубого цвета
-  (<Element>pollElement)
+  pollElement
     .querySelector(".create-poll__form")
     .classList.add("add-border-blue");
 
   // добавляем синий фон в левую часть опроса
-  (<Element>pollElement)
+  pollElement
     .querySelector(".create-poll__drag-button")
     .classList.add("add-bgcolor-blue");
 
@@ -65,7 +63,7 @@ function addRadioPoll(): void {
 
   // добавляем слушателя на input, чтобы сдвигать label обратно при блюре
   input.addEventListener("blur", () => {
-    label.classList.remove("on-focus");
+    input.value === "" && label.classList.remove("on-focus");
   });
 
   // добавляем слушателя на удаление
@@ -75,32 +73,34 @@ function addRadioPoll(): void {
   });
 
   addAnswerBtn.addEventListener("click", () => {
-    const answerElement: Node = answerTemplateContent
-      .querySelector(".create-poll__answer")
-      .cloneNode(true);
+    const answerElement: HTMLElement = <HTMLElement>(
+      answerTemplateContent
+        .querySelector(".create-poll__answer")
+        .cloneNode(true)
+    );
 
     // находим текстовый инпут
-    const input: HTMLInputElement = (<Element>answerElement).querySelector(
+    const input: HTMLInputElement = answerElement.querySelector(
       ".create-poll__form-input"
     );
     // находим его label
-    const label: HTMLElement = (<Element>answerElement).querySelector(
+    const label: HTMLElement = answerElement.querySelector(
       ".create-poll__form-label"
     );
 
     // находим input, чтобы сделать его radio или checkbox
-    const answerBox: HTMLInputElement = (<Element>answerElement).querySelector(
+    const answerBox: HTMLInputElement = answerElement.querySelector(
       "#answer-box"
     );
     answerBox.setAttribute("type", "radio");
 
     // находим кнопку закрытия
-    const closeBtn: HTMLButtonElement = (<Element>answerElement).querySelector(
+    const closeBtn: HTMLButtonElement = answerElement.querySelector(
       ".create-poll__button"
     );
 
     // добавляем синий фон в левую часть опроса
-    (<Element>answerElement)
+    answerElement
       .querySelector(".create-poll__drag-button")
       .classList.add("add-bgcolor-blue");
 
@@ -111,7 +111,7 @@ function addRadioPoll(): void {
 
     // добавляем слушателя на input, чтобы сдвигать label обратно при блюре
     input.addEventListener("blur", () => {
-      label.classList.remove("on-focus");
+      input.value === "" && label.classList.remove("on-focus");
     });
 
     // добавляем слушателя на удаление
@@ -134,36 +134,34 @@ function addRadioPoll(): void {
 }
 
 function addCheckboxPoll(): void {
-  const pollElement: Node = pollTemplateContent
-    .querySelector(".create-poll__question")
-    .cloneNode(true);
+  const pollElement: HTMLElement = <HTMLElement>(
+    pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
+  );
 
   // находим текстовый инпут
-  const input: HTMLInputElement = (<Element>pollElement).querySelector(
+  const input: HTMLInputElement = pollElement.querySelector(
     ".create-poll__form-input"
   );
   // находим его label
-  const label: HTMLElement = (<Element>pollElement).querySelector(
+  const label: HTMLElement = pollElement.querySelector(
     ".create-poll__form-label"
   );
 
   // находим кнопку закрытия
-  const closeBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
-    "#close"
-  );
+  const closeBtn: HTMLButtonElement = pollElement.querySelector("#close");
 
   // находим кнопку добавления строчки с вариантом ответа
-  const addAnswerBtn: HTMLButtonElement = (<Element>pollElement).querySelector(
+  const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
     "#add-answer"
   );
 
   // добавляем рамку фиолетового цвета
-  (<Element>pollElement)
+  pollElement
     .querySelector(".create-poll__form")
     .classList.add("add-border-purple");
 
   // добавляем фиолетовый фон в левую часть опроса
-  (<Element>pollElement)
+  pollElement
     .querySelector(".create-poll__drag-button")
     .classList.add("add-bgcolor-purple");
 
@@ -174,7 +172,7 @@ function addCheckboxPoll(): void {
 
   // добавляем слушателя на input, чтобы сдвигать label обратно при блюре
   input.addEventListener("blur", () => {
-    label.classList.remove("on-focus");
+    input.value === "" && label.classList.remove("on-focus");
   });
 
   // добавляем слушателя на удаление
@@ -184,32 +182,34 @@ function addCheckboxPoll(): void {
   });
 
   addAnswerBtn.addEventListener("click", () => {
-    const answerElement: Node = answerTemplateContent
-      .querySelector(".create-poll__answer")
-      .cloneNode(true);
+    const answerElement: HTMLElement = <HTMLElement>(
+      answerTemplateContent
+        .querySelector(".create-poll__answer")
+        .cloneNode(true)
+    );
 
     // находим текстовый инпут
-    const input: HTMLInputElement = (<Element>answerElement).querySelector(
+    const input: HTMLInputElement = answerElement.querySelector(
       ".create-poll__form-input"
     );
     // находим его label
-    const label: HTMLElement = (<Element>answerElement).querySelector(
+    const label: HTMLElement = answerElement.querySelector(
       ".create-poll__form-label"
     );
 
     // находим input, чтобы сделать его radio или checkbox
-    const answerBox: HTMLInputElement = (<Element>answerElement).querySelector(
+    const answerBox: HTMLInputElement = answerElement.querySelector(
       "#answer-box"
     );
     answerBox.setAttribute("type", "checkbox");
 
     // находим кнопку закрытия
-    const closeBtn: HTMLButtonElement = (<Element>answerElement).querySelector(
+    const closeBtn: HTMLButtonElement = answerElement.querySelector(
       ".create-poll__button"
     );
 
     // добавляем фиолетовый фон в левую часть опроса
-    (<Element>answerElement)
+    answerElement
       .querySelector(".create-poll__drag-button")
       .classList.add("add-bgcolor-purple");
 
@@ -220,7 +220,7 @@ function addCheckboxPoll(): void {
 
     // добавляем слушателя на input, чтобы сдвигать label обратно при блюре
     input.addEventListener("blur", () => {
-      label.classList.remove("on-focus");
+      input.value === "" && label.classList.remove("on-focus");
     });
 
     // добавляем слушателя на удаление
@@ -230,7 +230,7 @@ function addCheckboxPoll(): void {
     });
 
     // находим нужный контейнер для вставки через ближайшего родителя
-    const answerContainer: Element = addAnswerBtn
+    const answerContainer: HTMLElement = addAnswerBtn
       .closest(".create-poll__form")
       .querySelector(".create-poll__answers");
 
@@ -293,19 +293,17 @@ function setPolls(): void {
 
   // проходим циклом по данным и вставляем в разметку
   for (let num in data) {
-    const resultElement: Node = resultTemplateContent
-      .querySelector(".result-poll")
-      .cloneNode(true);
+    const resultElement: HTMLElement = <HTMLElement>(
+      resultTemplateContent.querySelector(".result-poll").cloneNode(true)
+    );
 
     // находим номер вопроса по порядку
-    const index: HTMLElement = (<Element>resultElement).querySelector(
+    const index: HTMLElement = resultElement.querySelector(
       ".result__form-index"
     );
 
     // находим текст вопроса
-    const text: HTMLElement = (<Element>resultElement).querySelector(
-      ".result__form-text"
-    );
+    const text: HTMLElement = resultElement.querySelector(".result__form-text");
 
     resultContainer.append(resultElement);
 
@@ -313,7 +311,7 @@ function setPolls(): void {
     text.textContent = poll["title"];
     const pollIndex: number = +num;
     index.textContent = (pollIndex + 1).toString();
-    const optionContainer: HTMLElement = (<Element>resultElement).querySelector(
+    const optionContainer: HTMLElement = resultElement.querySelector(
       ".result__form-options"
     );
 
@@ -323,19 +321,19 @@ function setPolls(): void {
       if (elem === "title" || elem === "type") {
         continue;
       }
-      const optionElement: Node = optionTemplateContent
-        .querySelector(".result__form-option")
-        .cloneNode(true);
+      const optionElement: HTMLElement = <HTMLElement>(
+        optionTemplateContent
+          .querySelector(".result__form-option")
+          .cloneNode(true)
+      );
 
       // находим input, чтобы менять тип на radio или checkbox
-      const input: HTMLInputElement = (<Element>optionElement).querySelector(
+      const input: HTMLInputElement = optionElement.querySelector(
         ".result__form-input"
       );
 
       // находим текст ответа
-      const answer: HTMLElement = (<Element>optionElement).querySelector(
-        "#answer"
-      );
+      const answer: HTMLElement = optionElement.querySelector("#answer");
 
       answer.textContent = poll[elem];
       input.setAttribute("type", inputType);

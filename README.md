@@ -6,6 +6,10 @@
 
   tsc
 
+- Если не компилируется, нужно установить TS в проект:
+
+  npm install typescript
+
 - если не установлен http-server, установить:
 
   npm install --global http-server - глобально на компьютер,
