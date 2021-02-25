@@ -1,6 +1,7 @@
 import { createPollsData } from "./createPollsData.js";
-import {addRadioPoll} from "./addRadioPoll.js";
-import {addCheckboxPoll} from "./addCheckboxPoll.js";
+import { addRadioPoll } from "./addRadioPoll.js";
+import { addCheckboxPoll } from "./addCheckboxPoll.js";
+import { pollsData, pollObject } from "./types/interfaces";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#result")
@@ -36,7 +37,7 @@ function setPolls(): void {
   }
 
   // забираем объект с данными
-  const data: Object = createPollsData();
+  const data: pollsData = createPollsData();
 
   // проходим циклом по данным и вставляем в разметку
   for (let num in data) {
@@ -52,15 +53,13 @@ function setPolls(): void {
     // находим текст вопроса
     const text: HTMLElement = resultElement.querySelector(".result__form-text");
 
-    const poll: Object = data[num];
+    const poll: pollObject = data[num];
     text.textContent = poll["title"];
     const pollIndex: number = +num;
     index.textContent = (pollIndex + 1).toString();
     const optionContainer: HTMLElement = resultElement.querySelector(
       ".result__form-options"
     );
-
-    const inputType: string = poll["type"];
 
     for (let elem in poll) {
       if (elem === "title" || elem === "type") {
@@ -81,7 +80,7 @@ function setPolls(): void {
       const answer: HTMLElement = optionElement.querySelector("#answer");
 
       answer.textContent = poll[elem];
-      input.setAttribute("type", inputType);
+      input.setAttribute("type", poll["type"]);
       optionContainer.append(optionElement);
     }
     resultContainer.append(resultElement);

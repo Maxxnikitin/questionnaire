@@ -4,7 +4,13 @@ import {
   addBorderColor,
   addDragColor,
 } from "./utils.js";
-import {addAnswerBtnListenner} from "./addAnswerBtnListenner.js";
+import { addAnswerBtnListenner } from "./addAnswerBtnListenner.js";
+import {
+  inputType,
+  borderColorClassName,
+  dragColorClassName,
+  elementToDel,
+} from "./enums/enums.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
@@ -17,6 +23,8 @@ export function addRadioPoll(): void {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
   );
+  // устанавливаем тип опроса как с единичным выбором
+  const pollType: string = inputType.radio;
 
   // находим текстовый инпут
   const input: HTMLInputElement = pollElement.querySelector(
@@ -37,12 +45,12 @@ export function addRadioPoll(): void {
 
   addInputListenner(input, label);
 
-  addBorderColor(pollElement, "add-border-blue");
-  addDragColor(pollElement, "add-bgcolor-blue");
+  addBorderColor(pollElement, borderColorClassName.radio);
+  addDragColor(pollElement, dragColorClassName.radio);
 
-  addDeleteBtnListenner(closeBtn, ".create-poll__question");
+  addDeleteBtnListenner(closeBtn, elementToDel.poll);
 
-  addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-blue");
+  addAnswerBtnListenner(addAnswerBtn, dragColorClassName.radio, pollType);
 
   // добавляем элемент на страницу
   pollContainer.append(pollElement);

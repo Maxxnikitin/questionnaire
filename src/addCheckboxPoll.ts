@@ -4,7 +4,13 @@ import {
   addBorderColor,
   addDragColor,
 } from "./utils.js";
-import {addAnswerBtnListenner} from "./addAnswerBtnListenner.js";
+import { addAnswerBtnListenner } from "./addAnswerBtnListenner.js";
+import {
+  inputType,
+  borderColorClassName,
+  dragColorClassName,
+  elementToDel,
+} from "./enums/enums.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
@@ -17,6 +23,9 @@ export function addCheckboxPoll(): void {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
   );
+
+  // устанавливаем тип опроса как со множественным выбором
+  const pollType: string = inputType.checkbox;
 
   // находим текстовый инпут
   const input: HTMLInputElement = pollElement.querySelector(
@@ -35,14 +44,14 @@ export function addCheckboxPoll(): void {
     "#add-answer"
   );
 
-  addBorderColor(pollElement, "add-border-purple");
-  addDragColor(pollElement, "add-bgcolor-purple");
+  addBorderColor(pollElement, borderColorClassName.checkbox);
+  addDragColor(pollElement, dragColorClassName.checkbox);
 
   addInputListenner(input, label);
 
-  addDeleteBtnListenner(closeBtn, ".create-poll__question");
+  addDeleteBtnListenner(closeBtn, elementToDel.poll);
 
-  addAnswerBtnListenner(addAnswerBtn, "add-bgcolor-purple");
+  addAnswerBtnListenner(addAnswerBtn, dragColorClassName.checkbox, pollType);
 
   // добавляем элемент на страницу
   pollContainer.append(pollElement);
