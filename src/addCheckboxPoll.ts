@@ -14,10 +14,15 @@ import {
 import { addAnswer } from "./addAnswer.js";
 import { pollObject } from "interfaces.js";
 import { AddCopyPollListenner } from "./addCopyPollListenner.js";
+import { dragPoll } from "./dragPoll.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
 )).content;
+
+const pollContainer: HTMLElement = document.querySelector(
+  ".create-poll__questions"
+);
 
 export function addCheckboxPoll(data?: pollObject): HTMLElement {
   const pollElement: HTMLElement = <HTMLElement>(
@@ -46,6 +51,13 @@ export function addCheckboxPoll(data?: pollObject): HTMLElement {
   const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
     "#add-answer"
   );
+
+  // находим кнопку для перетягивания
+  let drag: HTMLElement = pollElement.querySelector("#drag");
+
+  drag.addEventListener("mousedown", (evt: MouseEvent) => {
+    dragPoll(evt, drag, pollElement);
+  });
 
   if (data) {
     input.value = data.title;

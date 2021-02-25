@@ -5,9 +5,9 @@ const pollContainer: HTMLElement = document.querySelector(
 export function dragPoll(
   evt: MouseEvent,
   poll: HTMLElement,
-  func: () => HTMLElement
+  parentElement: HTMLElement
 ): void {
-  poll = func();
+  poll = parentElement;
   poll.style.position = "absolute";
   document.body.append(poll);
 

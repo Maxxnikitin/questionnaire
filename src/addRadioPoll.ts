@@ -14,6 +14,7 @@ import {
 import { AddCopyPollListenner } from "./addCopyPollListenner.js";
 import { pollObject } from "interfaces.js";
 import { addAnswer } from "./addAnswer.js";
+import { dragPoll } from "./dragPoll.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
@@ -46,6 +47,13 @@ export function addRadioPoll(data?: pollObject): HTMLElement {
   const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
     "#add-answer"
   );
+
+  // находим кнопку для перетягивания
+  let drag: HTMLElement = pollElement.querySelector("#drag");
+
+  drag.addEventListener("mousedown", (evt: MouseEvent) => {
+    dragPoll(evt, drag, pollElement);
+  });
 
   if (data) {
     input.value = data.title;

@@ -96,10 +96,10 @@ function setPolls(): void {
 }
 
 templateRadio.addEventListener("mousedown", (evt: MouseEvent) => {
-  dragPoll(evt, templateRadio, addRadioPoll);
+  dragPoll(evt, templateRadio, addRadioPoll());
 });
 
 templateCheckbox.addEventListener("mousedown", (evt: MouseEvent) => {
-  dragPoll(evt, templateCheckbox, addCheckboxPoll);
+  dragPoll(evt, templateCheckbox, addCheckboxPoll());
 });
 testBtn.addEventListener("click", setPolls);
