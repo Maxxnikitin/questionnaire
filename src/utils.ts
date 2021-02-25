@@ -18,7 +18,7 @@ export function addDeleteBtnListenner(
   className: string
 ): void {
   function del(): void {
-    const element = btn.closest(className);
+    const element: HTMLElement = btn.closest(className);
     element.remove();
   }
   // добавляем слушателя на удаление

@@ -13,7 +13,7 @@ export enum dragColorClassName {
   checkbox = "add-bgcolor-purple",
 }
 
-export enum elementToDel {
+export enum elementOnPage {
   poll = ".create-poll__question",
   answer = ".create-poll__answer",
 }

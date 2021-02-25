@@ -9,8 +9,11 @@ import {
   inputType,
   borderColorClassName,
   dragColorClassName,
-  elementToDel,
+  elementOnPage,
 } from "./enums/enums.js";
+import { addAnswer } from "./addAnswer.js";
+import { pollObject } from "interfaces.js";
+import { AddCopyPollListenner } from "./addCopyPollListenner.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
@@ -19,7 +22,7 @@ const pollContainer: HTMLElement = document.querySelector(
   ".create-poll__questions"
 );
 
-export function addCheckboxPoll(): void {
+export function addCheckboxPoll(data?: pollObject): void {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
   );
@@ -39,17 +42,38 @@ export function addCheckboxPoll(): void {
   // находим кнопку закрытия
   const closeBtn: HTMLButtonElement = pollElement.querySelector("#close");
 
+  // находим кнопку копирования
+  const copyBtn: HTMLButtonElement = pollElement.querySelector("#copy");
+
   // находим кнопку добавления строчки с вариантом ответа
   const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
     "#add-answer"
   );
+
+  if (data) {
+    input.value = data.title;
+    input.value !== "" && label.classList.add("on-focus");
+    for (let elem in data) {
+      if (elem === "title" || elem === "type") {
+        continue;
+      }
+      addAnswer(
+        addAnswerBtn,
+        dragColorClassName.checkbox,
+        pollType,
+        data[elem]
+      );
+    }
+  }
 
   addBorderColor(pollElement, borderColorClassName.checkbox);
   addDragColor(pollElement, dragColorClassName.checkbox);
 
   addInputListenner(input, label);
 
-  addDeleteBtnListenner(closeBtn, elementToDel.poll);
+  addDeleteBtnListenner(closeBtn, elementOnPage.poll);
+
+  AddCopyPollListenner(copyBtn, elementOnPage.poll, pollType);
 
   addAnswerBtnListenner(addAnswerBtn, dragColorClassName.checkbox, pollType);
 

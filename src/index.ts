@@ -90,6 +90,14 @@ function setPolls(): void {
   content.classList.add("disabled");
 }
 
-templateRadio.addEventListener("click", addRadioPoll);
-templateCheckbox.addEventListener("click", addCheckboxPoll);
+function createRadioPoll(): void {
+  addRadioPoll();
+}
+
+function createCheckboxPoll(): void {
+  addCheckboxPoll();
+}
+
+templateRadio.addEventListener("click", createRadioPoll);
+templateCheckbox.addEventListener("click", createCheckboxPoll);
 testBtn.addEventListener("click", setPolls);

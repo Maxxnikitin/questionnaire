@@ -9,8 +9,11 @@ import {
   inputType,
   borderColorClassName,
   dragColorClassName,
-  elementToDel,
+  elementOnPage,
 } from "./enums/enums.js";
+import { AddCopyPollListenner } from "./addCopyPollListenner.js";
+import { pollObject } from "interfaces.js";
+import { addAnswer } from "./addAnswer.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
@@ -19,7 +22,7 @@ const pollContainer: HTMLElement = document.querySelector(
   ".create-poll__questions"
 );
 
-export function addRadioPoll(): void {
+export function addRadioPoll(data?: pollObject): void {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
   );
@@ -30,6 +33,7 @@ export function addRadioPoll(): void {
   const input: HTMLInputElement = pollElement.querySelector(
     ".create-poll__form-input"
   );
+
   // находим его label
   const label: HTMLElement = pollElement.querySelector(
     ".create-poll__form-label"
@@ -38,17 +42,33 @@ export function addRadioPoll(): void {
   // находим кнопку закрытия
   const closeBtn: HTMLButtonElement = pollElement.querySelector("#close");
 
+  // находим кнопку копирования
+  const copyBtn: HTMLButtonElement = pollElement.querySelector("#copy");
+
   // находим кнопку добавления строчки с вариантом ответа
   const addAnswerBtn: HTMLButtonElement = pollElement.querySelector(
     "#add-answer"
   );
+
+  if (data) {
+    input.value = data.title;
+    input.value !== "" && label.classList.add("on-focus");
+    for (let elem in data) {
+      if (elem === "title" || elem === "type") {
+        continue;
+      }
+      addAnswer(addAnswerBtn, dragColorClassName.radio, pollType, data[elem]);
+    }
+  }
 
   addInputListenner(input, label);
 
   addBorderColor(pollElement, borderColorClassName.radio);
   addDragColor(pollElement, dragColorClassName.radio);
 
-  addDeleteBtnListenner(closeBtn, elementToDel.poll);
+  addDeleteBtnListenner(closeBtn, elementOnPage.poll);
+
+  AddCopyPollListenner(copyBtn, elementOnPage.poll, pollType);
 
   addAnswerBtnListenner(addAnswerBtn, dragColorClassName.radio, pollType);
 
