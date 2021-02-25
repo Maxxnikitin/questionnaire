@@ -18,11 +18,8 @@ import { addAnswer } from "./addAnswer.js";
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
 )).content;
-const pollContainer: HTMLElement = document.querySelector(
-  ".create-poll__questions"
-);
 
-export function addRadioPoll(data?: pollObject): void {
+export function addRadioPoll(data?: pollObject): HTMLElement {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
   );
@@ -72,6 +69,5 @@ export function addRadioPoll(data?: pollObject): void {
 
   addAnswerBtnListenner(addAnswerBtn, dragColorClassName.radio, pollType);
 
-  // добавляем элемент на страницу
-  pollContainer.append(pollElement);
+  return pollElement;
 }

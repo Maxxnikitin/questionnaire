@@ -27,7 +27,8 @@ export function AddCopyPollListenner(
     );
 
     const data: pollObject = createCopyPollData(btn, className, pollType);
-    pollType === inputType.radio && addRadioPoll(data);
-    pollType === inputType.checkbox && addCheckboxPoll(data);
+    pollType === inputType.radio && pollContainer.append(addRadioPoll(data));
+    pollType === inputType.checkbox &&
+      pollContainer.append(addCheckboxPoll(data));
   });
 }

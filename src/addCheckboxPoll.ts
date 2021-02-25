@@ -18,11 +18,8 @@ import { AddCopyPollListenner } from "./addCopyPollListenner.js";
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")
 )).content;
-const pollContainer: HTMLElement = document.querySelector(
-  ".create-poll__questions"
-);
 
-export function addCheckboxPoll(data?: pollObject): void {
+export function addCheckboxPoll(data?: pollObject): HTMLElement {
   const pollElement: HTMLElement = <HTMLElement>(
     pollTemplateContent.querySelector(".create-poll__question").cloneNode(true)
   );
@@ -77,6 +74,5 @@ export function addCheckboxPoll(data?: pollObject): void {
 
   addAnswerBtnListenner(addAnswerBtn, dragColorClassName.checkbox, pollType);
 
-  // добавляем элемент на страницу
-  pollContainer.append(pollElement);
+  return pollElement;
 }
