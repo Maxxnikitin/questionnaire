@@ -2,7 +2,7 @@ import { createPollsData } from "./createPollsData.js";
 import { addPoll } from "./addPoll.js";
 import { pollsData, pollObject } from "./types/interfaces";
 import { dragPoll } from "./dragPoll.js";
-import { dragPolls } from "./dragPolls.js";
+//import { dragPolls } from "./dragPolls.js";
 import { inputType } from "./enums/enums.js";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
@@ -105,6 +105,6 @@ templateCheckbox.addEventListener("mousedown", (evt: MouseEvent) => {
 });
 testBtn.addEventListener("click", setPolls);
 
-pollContainers.forEach((poll) => {
+/* pollContainers.forEach((poll) => {
   dragPolls(poll);
-});
+}); */

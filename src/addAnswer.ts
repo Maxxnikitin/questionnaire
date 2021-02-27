@@ -5,7 +5,7 @@ import {
 } from "./utils.js";
 
 import { dragColorClassName, elementOnPage } from "./enums/enums.js";
-import { dragPolls } from "./dragPolls.js";
+//import { dragPolls } from "./dragPolls.js";
 
 const answerTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#answer")
@@ -60,5 +60,5 @@ export function addAnswer(
 
   // добавляем вариант ответа на страницу
   answerContainer.append(answerElement);
-  dragPolls(answerContainer);
+  //dragPolls(answerContainer);
 }
