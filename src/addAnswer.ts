@@ -4,7 +4,8 @@ import {
   addDragColor,
 } from "./utils.js";
 
-import { elementOnPage } from "./enums/enums.js";
+import { dragColorClassName, elementOnPage } from "./enums/enums.js";
+import { dragPolls } from "./dragPolls.js";
 
 const answerTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#answer")
@@ -12,7 +13,6 @@ const answerTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
 
 export function addAnswer(
   btn: HTMLButtonElement,
-  colorClass: string,
   pollType: string,
   answer?: string
 ): void {
@@ -42,7 +42,7 @@ export function addAnswer(
     ".create-poll__button"
   );
 
-  addDragColor(answerElement, colorClass);
+  addDragColor(answerElement, dragColorClassName[pollType]);
 
   addInputListenner(input, label);
 
@@ -60,4 +60,5 @@ export function addAnswer(
 
   // добавляем вариант ответа на страницу
   answerContainer.append(answerElement);
+  dragPolls(answerContainer);
 }

@@ -1,8 +1,9 @@
 import { createPollsData } from "./createPollsData.js";
-import { addRadioPoll } from "./addRadioPoll.js";
-import { addCheckboxPoll } from "./addCheckboxPoll.js";
+import { addPoll } from "./addPoll.js";
 import { pollsData, pollObject } from "./types/interfaces";
 import { dragPoll } from "./dragPoll.js";
+import { dragPolls } from "./dragPolls.js";
+import { inputType } from "./enums/enums.js";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#result")
@@ -18,8 +19,8 @@ const templateCheckbox: HTMLElement = document.querySelector(
   "#template-checkbox"
 );
 
-const pollContainer: HTMLElement = document.querySelector(
-  ".create-poll__questions"
+let pollContainers: HTMLElement[] = Array.from(
+  document.querySelectorAll(".cont")
 );
 
 const testBtn: HTMLButtonElement = document.querySelector("#btn-test");
@@ -96,10 +97,14 @@ function setPolls(): void {
 }
 
 templateRadio.addEventListener("mousedown", (evt: MouseEvent) => {
-  dragPoll(evt, templateRadio, addRadioPoll());
+  dragPoll(evt, templateRadio, addPoll(inputType.radio));
 });
 
 templateCheckbox.addEventListener("mousedown", (evt: MouseEvent) => {
-  dragPoll(evt, templateCheckbox, addCheckboxPoll());
+  dragPoll(evt, templateCheckbox, addPoll(inputType.checkbox));
 });
 testBtn.addEventListener("click", setPolls);
+
+pollContainers.forEach((poll) => {
+  dragPolls(poll);
+});
