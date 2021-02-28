@@ -12,7 +12,9 @@ export function dragPolls(main: HTMLElement): void {
       }
       evt.dataTransfer.setData("text/plain", poll.dataset.id);
 
-      const pollContainer = main.querySelector(".create-poll__questions");
+      const pollContainer: HTMLElement = main.querySelector(
+        ".create-poll__questions"
+      );
       pollContainer.append(poll);
     }
 
@@ -40,7 +42,7 @@ export function dragPolls(main: HTMLElement): void {
 
   main.addEventListener("drop", (evt: DragEvent) => {
     // находим перетаскиваемый опрос по идентификатору, записанному в dataTransfer
-    const poll = main.querySelector(
+    const poll: HTMLElement = main.querySelector(
       `[data-id="${evt.dataTransfer.getData("text/plain")}"]`
     );
 
@@ -52,7 +54,7 @@ export function dragPolls(main: HTMLElement): void {
     // на всякий случай еще раз проверяем, что имеем дело с опросом
     if (elemBelow.classList.contains("create-poll__question")) {
       // определяем центр
-      const center =
+      const center: number =
         elemBelow.getBoundingClientRect().y +
         elemBelow.getBoundingClientRect().height / 2;
       // если курсор находится ниже центра
