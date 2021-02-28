@@ -1,7 +1,6 @@
 import { createPollsData } from "./createPollsData.js";
 import { pollsData, pollObject } from "./types/interfaces";
 import { dragPolls } from "./dragPolls.js";
-import { dragTemplate } from "./dragTemplate.js";
 import { addPoll } from "./addPoll.js";
 
 import { inputType } from "./enums/enums.js";
@@ -98,11 +97,11 @@ function setPolls(): void {
   content.classList.add("disabled");
 }
 
-templateRadio.addEventListener("click", (evt: MouseEvent) => {
+templateRadio.addEventListener("click", () => {
   pollContainer.append(addPoll(inputType.radio));
 });
 
-templateCheckbox.addEventListener("click", (evt: MouseEvent) => {
+templateCheckbox.addEventListener("click", () => {
   pollContainer.append(addPoll(inputType.checkbox));
 });
 
