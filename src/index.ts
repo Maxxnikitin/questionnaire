@@ -1,7 +1,9 @@
 import { createPollsData } from "./createPollsData.js";
-import { addPoll } from "./addPoll.js";
 import { pollsData, pollObject } from "./types/interfaces";
-import { dragPoll } from "./dragPoll.js";
+import { dragPolls } from "./dragPolls.js";
+import { dragTemplate } from "./dragTemplate.js";
+import { addPoll } from "./addPoll.js";
+
 import { inputType } from "./enums/enums.js";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
@@ -13,19 +15,20 @@ const optionTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#option")
 )).content;
 
-let templateRadio: HTMLElement = document.querySelector("#template-radio");
-const templateCheckbox: HTMLElement = document.querySelector(
-  "#template-checkbox"
-);
-
-let pollContainers: HTMLElement[] = Array.from(
-  document.querySelectorAll(".cont")
+let templateContainer: HTMLElement = document.querySelector(".create-poll");
+let pollContainer: HTMLElement = document.querySelector(
+  ".create-poll__questions"
 );
 
 const testBtn: HTMLButtonElement = document.querySelector("#btn-test");
 
 const content: HTMLElement = document.querySelector(".content");
 const result: HTMLElement = document.querySelector(".result");
+
+let templateRadio: HTMLElement = document.querySelector("#template-radio");
+let templateCheckbox: HTMLElement = document.querySelector(
+  "#template-checkbox"
+);
 
 // функция отправки данных в превью
 function setPolls(): void {
@@ -95,11 +98,14 @@ function setPolls(): void {
   content.classList.add("disabled");
 }
 
-templateRadio.addEventListener("mousedown", (evt: MouseEvent) => {
-  dragPoll(evt, templateRadio, addPoll(inputType.radio));
+templateRadio.addEventListener("click", (evt: MouseEvent) => {
+  pollContainer.append(addPoll(inputType.radio));
 });
 
-templateCheckbox.addEventListener("mousedown", (evt: MouseEvent) => {
-  dragPoll(evt, templateCheckbox, addPoll(inputType.checkbox));
+templateCheckbox.addEventListener("click", (evt: MouseEvent) => {
+  pollContainer.append(addPoll(inputType.checkbox));
 });
+
 testBtn.addEventListener("click", setPolls);
+
+dragPolls(templateContainer);

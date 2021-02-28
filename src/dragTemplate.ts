@@ -2,14 +2,14 @@ const pollContainer: HTMLElement = document.querySelector(
   ".create-poll__questions"
 );
 
-export function dragPoll(
+export function dragTemplate(
   evt: MouseEvent,
   poll: HTMLElement,
   parentElement: HTMLElement
 ): void {
   poll = parentElement;
   poll.style.position = "absolute";
-  document.body.append(poll);
+  pollContainer.append(poll);
 
   function moveAt(pageX, pageY) {
     poll.style.left = pageX - 6 + "px";
@@ -27,11 +27,6 @@ export function dragPoll(
   poll.onmouseup = function () {
     document.removeEventListener("mousemove", onMouseMove);
     poll.onmouseup = null;
-    poll.style.position = "static";
-    pollContainer.append(poll);
-  };
-
-  poll.ondragstart = function () {
-    return false;
+    poll.removeAttribute("style");
   };
 }
