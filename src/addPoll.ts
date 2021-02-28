@@ -6,7 +6,6 @@ import {
 } from "./utils.js";
 import { addAnswerBtnListenner } from "./addAnswerBtnListenner.js";
 import {
-  inputType,
   borderColorClassName,
   dragColorClassName,
   elementOnPage,
@@ -14,7 +13,6 @@ import {
 import { addAnswer } from "./addAnswer.js";
 import { pollObject } from "interfaces.js";
 import { AddCopyPollListenner } from "./addCopyPollListenner.js";
-import { dragPoll } from "./dragPoll.js";
 
 const pollTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#poll")

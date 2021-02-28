@@ -5,7 +5,6 @@ import {
 } from "./utils.js";
 
 import { dragColorClassName, elementOnPage } from "./enums/enums.js";
-//import { dragPolls } from "./dragPolls.js";
 
 const answerTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#answer")
