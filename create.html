@@ -51,12 +51,12 @@
 
       <section class="content">
         <div class="create-poll">
-          <ul class="create-poll__questions"></ul>
+          <ul class="create-poll__questions cont"></ul>
 
-          <ul class="templates">
+          <ul class="templates cont">
             <h2 class="templates__title">Выберите заготовку</h2>
 
-            <li id="template-radio" class="template">
+            <li id="template-radio" class="template" draggable='true'>
               <div class="template__content">
                 <img
                   class="template__drag-img"
@@ -72,7 +72,7 @@
               />
             </li>
 
-            <li id="template-checkbox" class="template">
+            <li id="template-checkbox" class="template" draggable='true'>
               <div class="template__content">
                 <img
                   class="template__drag-img"
@@ -96,7 +96,7 @@
       </section>
 
       <template id="poll">
-        <li class="create-poll__question">
+        <li class="create-poll__question" draggable='true'>
           <div id="drag" class="create-poll__drag-button">
             <img
               class="create-poll__form-img"
@@ -125,7 +125,7 @@
                       alt="иконка кнопки."
                     />
                   </button>
-                  <button id="close" class="create-poll__button" type="button">
+                  <button id="close" data-name="remove-btn" class="create-poll__button" type="button">
                     &#10006;
                   </button>
                 </div>
@@ -144,7 +144,7 @@
       </template>
 
       <template id="answer">
-        <li class="create-poll__answer">
+        <li class="create-poll__answer" draggable='true'>
           <div class="create-poll__drag-button">
             <img
               class="create-poll__form-img"
