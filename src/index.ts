@@ -1,6 +1,9 @@
 import { createPollsData } from "./createPollsData.js";
 import { pollsData, pollObject } from "./types/interfaces";
 import { dragPolls } from "./dragPolls.js";
+import { dragTemplate } from "./dragTemplate.js";
+import { addPoll } from "./addPoll.js";
+import { inputType } from "./enums/enums.js";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#result")
@@ -11,12 +14,20 @@ const optionTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
   document.querySelector("#option")
 )).content;
 
-let pollContainer: HTMLElement = document.querySelector(".create-poll");
+let templateContainer: HTMLElement = document.querySelector(".create-poll");
+let pollContainer: HTMLElement = document.querySelector(
+  ".create-poll__questions"
+);
 
 const testBtn: HTMLButtonElement = document.querySelector("#btn-test");
 
 const content: HTMLElement = document.querySelector(".content");
 const result: HTMLElement = document.querySelector(".result");
+
+let templateRadio: HTMLElement = document.querySelector("#template-radio");
+let templateCheckbox: HTMLElement = document.querySelector(
+  "#template-checkbox"
+);
 
 // функция отправки данных в превью
 function setPolls(): void {
@@ -86,6 +97,14 @@ function setPolls(): void {
   content.classList.add("disabled");
 }
 
+templateRadio.addEventListener("click", (evt: MouseEvent) => {
+  pollContainer.append(addPoll(inputType.radio));
+});
+
+templateCheckbox.addEventListener("click", (evt: MouseEvent) => {
+  pollContainer.append(addPoll(inputType.checkbox));
+});
+
 testBtn.addEventListener("click", setPolls);
 
-dragPolls(pollContainer);
+dragPolls(templateContainer);
