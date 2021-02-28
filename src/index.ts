@@ -3,6 +3,7 @@ import { pollsData, pollObject } from "./types/interfaces";
 import { dragPolls } from "./dragPolls.js";
 import { dragTemplate } from "./dragTemplate.js";
 import { addPoll } from "./addPoll.js";
+
 import { inputType } from "./enums/enums.js";
 
 const resultTemplateContent: DocumentFragment = (<HTMLTemplateElement>(
